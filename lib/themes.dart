@@ -12,9 +12,18 @@ class AppThemes {
   static const String sunset = 'sunset';
   static const String forest = 'forest';
   static const String cosmic = 'cosmic';
+  static const String fire = 'fire';
+  static const String ice = 'ice';
+  static const String desert = 'desert';
+  static const String galaxy = 'galaxy';
+  static const String aurora = 'aurora';
+  static const String storm = 'storm';
+  static const String meadow = 'meadow';
+  static const String candy = 'candy';
+  static const String vintage = 'vintage';
 
   static List<String> getThemeNames() {
-    return [light, dark, neon, retro, minimal, gradient, ocean, sunset, forest, cosmic];
+    return [light, dark, neon, retro, minimal, gradient, ocean, sunset, forest, cosmic, fire, ice, desert, galaxy, aurora, storm, meadow, candy, vintage];
   }
 
   static ThemeData getTheme(String themeName) {
@@ -37,6 +46,24 @@ class AppThemes {
         return forestTheme;
       case cosmic:
         return cosmicTheme;
+      case fire:
+        return fireTheme;
+      case ice:
+        return iceTheme;
+      case desert:
+        return desertTheme;
+      case galaxy:
+        return galaxyTheme;
+      case aurora:
+        return auroraTheme;
+      case storm:
+        return stormTheme;
+      case meadow:
+        return meadowTheme;
+      case candy:
+        return candyTheme;
+      case vintage:
+        return vintageTheme;
       case light:
       default:
         return lightTheme;
@@ -241,6 +268,198 @@ class AppThemes {
       ),
       bodyLarge: GoogleFonts.orbitron(
         color: Colors.white70,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+
+  static ThemeData fireTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: Colors.red,
+    scaffoldBackgroundColor: Colors.white,
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 160,
+        fontWeight: FontWeight.w500,
+        shadows: [
+          Shadow(color: const Color(0xFFFF4500), blurRadius: 15, offset: const Offset(4, 4)),
+        ],
+      ),
+      bodyLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+
+  static ThemeData iceTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: Colors.blue,
+    scaffoldBackgroundColor: Colors.white,
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 160,
+        fontWeight: FontWeight.w500,
+        shadows: [
+          Shadow(color: const Color(0xFF00BFFF), blurRadius: 15, offset: const Offset(4, 4)),
+        ],
+      ),
+      bodyLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+
+  static ThemeData desertTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: Colors.amber,
+    scaffoldBackgroundColor: Colors.white,
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 160,
+        fontWeight: FontWeight.w500,
+        shadows: [
+          Shadow(color: const Color(0xFFD2691E), blurRadius: 15, offset: const Offset(4, 4)),
+        ],
+      ),
+      bodyLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+
+  static ThemeData galaxyTheme = ThemeData(
+    brightness: Brightness.dark,
+    primaryColor: Colors.purple,
+    scaffoldBackgroundColor: Colors.black,
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.orbitron(
+        color: Colors.white,
+        fontSize: 160,
+        fontWeight: FontWeight.bold,
+        shadows: [
+          const Shadow(color: Colors.pinkAccent, blurRadius: 20, offset: Offset(0, 0)),
+          const Shadow(color: Colors.purpleAccent, blurRadius: 30, offset: Offset(0, 0)),
+        ],
+      ),
+      bodyLarge: GoogleFonts.orbitron(
+        color: Colors.white70,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+
+  static ThemeData auroraTheme = ThemeData(
+    brightness: Brightness.dark,
+    primaryColor: Colors.green,
+    scaffoldBackgroundColor: Colors.black,
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 160,
+        fontWeight: FontWeight.w500,
+        shadows: [
+          const Shadow(color: Colors.greenAccent, blurRadius: 15, offset: Offset(0, 0)),
+          const Shadow(color: Colors.blueAccent, blurRadius: 25, offset: Offset(0, 0)),
+        ],
+      ),
+      bodyLarge: GoogleFonts.roboto(
+        color: Colors.white70,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+
+  static ThemeData stormTheme = ThemeData(
+    brightness: Brightness.dark,
+    primaryColor: Colors.grey,
+    scaffoldBackgroundColor: Colors.black,
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 160,
+        fontWeight: FontWeight.w500,
+        shadows: [
+          const Shadow(color: Colors.blueGrey, blurRadius: 20, offset: Offset(0, 0)),
+          const Shadow(color: Colors.white, blurRadius: 30, offset: Offset(0, 0)),
+        ],
+      ),
+      bodyLarge: GoogleFonts.roboto(
+        color: Colors.white70,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+
+  static ThemeData meadowTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: Colors.green,
+    scaffoldBackgroundColor: Colors.white,
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 160,
+        fontWeight: FontWeight.w500,
+        shadows: [
+          Shadow(color: const Color(0xFF228B22), blurRadius: 15, offset: const Offset(4, 4)),
+        ],
+      ),
+      bodyLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+
+  static ThemeData candyTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: Colors.pink,
+    scaffoldBackgroundColor: Colors.white,
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 160,
+        fontWeight: FontWeight.w500,
+        shadows: [
+          const Shadow(color: Colors.pinkAccent, blurRadius: 15, offset: Offset(4, 4)),
+        ],
+      ),
+      bodyLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+
+  static ThemeData vintageTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: Colors.brown,
+    scaffoldBackgroundColor: Colors.white,
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.roboto(
+        color: Colors.white,
+        fontSize: 160,
+        fontWeight: FontWeight.w500,
+        shadows: [
+          Shadow(color: const Color(0xFF8B4513), blurRadius: 15, offset: const Offset(4, 4)),
+        ],
+      ),
+      bodyLarge: GoogleFonts.roboto(
+        color: Colors.white,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),

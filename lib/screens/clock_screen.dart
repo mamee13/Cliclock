@@ -117,6 +117,96 @@ class _ClockScreenState extends State<ClockScreen> {
                     colors: [Color(0xFF0F0F23), Color(0xFF1a1a2e), Color(0xFF16213e)],
                   ),
                 ),
+              )
+            else if (settings.theme == AppThemes.fire)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFFFF4500), Color(0xFFFF6347), Color(0xFFFFD700)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.ice)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFF00BFFF), Color(0xFF87CEEB), Color(0xFFE0FFFF)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.desert)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFFD2691E), Color(0xFFF4A460), Color(0xFFFFDAB9)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.galaxy)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFF2E1A47), Color(0xFF8B5CF6), Color(0xFFEC4899)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.aurora)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFF0F1419), Color(0xFF1E3A8A), Color(0xFF06B6D4)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.storm)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFF1F2937), Color(0xFF374151), Color(0xFF6B7280)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.meadow)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFF16A34A), Color(0xFF22C55E), Color(0xFF86EFAC)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.candy)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFFEC4899), Color(0xFFF97316), Color(0xFFF59E0B)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.vintage)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFF92400E), Color(0xFFD97706), Color(0xFFFCD34D)],
+                  ),
+                ),
               ),
             Center(
               child: Padding(

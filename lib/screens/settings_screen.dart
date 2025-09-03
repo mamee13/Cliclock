@@ -92,59 +92,105 @@ class SettingsScreen extends StatelessWidget {
   }
 
   void _showThemePicker(BuildContext context, SettingsProvider provider) {
+    final themes = AppThemes.getThemeNames();
+    final initialPage = themes.indexOf(provider.settings.theme);
+
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Select Theme', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-        content: SizedBox(
-          width: double.maxFinite,
-          height: 300,
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 2,
-            ),
-            itemCount: AppThemes.getThemeNames().length,
-            itemBuilder: (context, index) {
-              final theme = AppThemes.getThemeNames()[index];
-              final isSelected = provider.settings.theme == theme;
-              return GestureDetector(
-                onTap: () {
-                  provider.setTheme(theme);
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: _getThemeColor(theme),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: isSelected ? Theme.of(context).primaryColor : Colors.transparent,
-                      width: 3,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      theme,
-                      style: TextStyle(
-                        color: _getTextColor(theme),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Container(
+          height: 400,
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              const Text(
+                'Choose Theme',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: PageView.builder(
+                  controller: PageController(initialPage: initialPage),
+                  itemCount: themes.length,
+                  itemBuilder: (context, index) {
+                    final theme = themes[index];
+                    final isSelected = provider.settings.theme == theme;
+                    return GestureDetector(
+                      onTap: () {
+                        provider.setTheme(theme);
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                          color: _getThemeColor(theme),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: isSelected ? Theme.of(context).primaryColor : Colors.transparent,
+                            width: 4,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              blurRadius: 10,
+                              offset: const Offset(0, 5),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '12:34',
+                                style: TextStyle(
+                                  color: _getTextColor(theme),
+                                  fontSize: 48,
+                                  fontWeight: FontWeight.bold,
+                                  shadows: _getThemeShadows(theme),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                theme.toUpperCase(),
+                                style: TextStyle(
+                                  color: _getTextColor(theme),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              if (isSelected)
+                                const Icon(
+                                  Icons.check_circle,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
-              );
-            },
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('Cancel'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('Done'),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-        ],
       ),
     );
   }
@@ -171,6 +217,24 @@ class SettingsScreen extends StatelessWidget {
         return const Color(0xFF0B6623);
       case 'cosmic':
         return const Color(0xFF0F0F23);
+      case 'fire':
+        return const Color(0xFFFF4500);
+      case 'ice':
+        return const Color(0xFF00BFFF);
+      case 'desert':
+        return const Color(0xFFD2691E);
+      case 'galaxy':
+        return const Color(0xFF2E1A47);
+      case 'aurora':
+        return const Color(0xFF0F1419);
+      case 'storm':
+        return const Color(0xFF1F2937);
+      case 'meadow':
+        return const Color(0xFF16A34A);
+      case 'candy':
+        return const Color(0xFFEC4899);
+      case 'vintage':
+        return const Color(0xFF92400E);
       default:
         return Colors.grey;
     }
@@ -198,8 +262,43 @@ class SettingsScreen extends StatelessWidget {
         return Colors.white;
       case 'cosmic':
         return Colors.white;
+      case 'fire':
+        return Colors.white;
+      case 'ice':
+        return Colors.white;
+      case 'desert':
+        return Colors.white;
+      case 'galaxy':
+        return Colors.white;
+      case 'aurora':
+        return Colors.white;
+      case 'storm':
+        return Colors.white;
+      case 'meadow':
+        return Colors.white;
+      case 'candy':
+        return Colors.white;
+      case 'vintage':
+        return Colors.white;
       default:
         return Colors.black;
+    }
+  }
+
+  List<Shadow> _getThemeShadows(String theme) {
+    switch (theme) {
+      case 'neon':
+        return [const Shadow(color: Colors.greenAccent, blurRadius: 10)];
+      case 'cosmic':
+        return [const Shadow(color: Colors.purpleAccent, blurRadius: 10)];
+      case 'galaxy':
+        return [const Shadow(color: Colors.pinkAccent, blurRadius: 10)];
+      case 'aurora':
+        return [const Shadow(color: Colors.greenAccent, blurRadius: 10)];
+      case 'storm':
+        return [const Shadow(color: Colors.blueGrey, blurRadius: 10)];
+      default:
+        return [];
     }
   }
 
