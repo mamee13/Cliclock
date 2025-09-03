@@ -12,14 +12,13 @@ class SettingsScreen extends StatelessWidget {
     final settingsProvider = context.watch<SettingsProvider>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Theme.of(context).textTheme.displayLarge?.color)),
+        title: Text('Settings', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: _getAppBarTextColor(context))),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, size: 28, color: Theme.of(context).textTheme.displayLarge?.color),
+          icon: Icon(Icons.arrow_back, size: 28, color: _getAppBarTextColor(context)),
           onPressed: () => Navigator.pop(context),
         ),
         elevation: 4,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.9),
-        foregroundColor: Theme.of(context).textTheme.displayLarge?.color,
+        backgroundColor: _getAppBarBackgroundColor(context),
         shadowColor: Colors.black.withOpacity(0.3),
       ),
       body: Stack(
@@ -244,8 +243,8 @@ class SettingsScreen extends StatelessWidget {
       shadowColor: Colors.black.withOpacity(0.3),
       child: ListTile(
         leading: Icon(icon, size: 32, color: Theme.of(context).primaryColor),
-        title: Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Theme.of(context).textTheme.displayLarge?.color)),
-        subtitle: Text(subtitle, style: TextStyle(color: Theme.of(context).textTheme.bodyLarge?.color?.withOpacity(0.7))),
+        title: Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: _getCardTextColor(context))),
+        subtitle: Text(subtitle, style: TextStyle(color: _getCardTextColor(context).withOpacity(0.7))),
         trailing: trailing,
         onTap: onTap,
         contentPadding: const EdgeInsets.all(16),
@@ -269,9 +268,14 @@ class SettingsScreen extends StatelessWidget {
             children: [
               Text(
                 'Choose Theme',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Theme.of(context).textTheme.displayLarge?.color),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: _getCardTextColor(context)),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 8),
+              Text(
+                'Slide to choose',
+                style: TextStyle(fontSize: 14, color: _getCardTextColor(context).withOpacity(0.6)),
+              ),
+              const SizedBox(height: 12),
               Expanded(
                 child: PageView.builder(
                   controller: PageController(initialPage: initialPage),
@@ -465,6 +469,21 @@ class SettingsScreen extends StatelessWidget {
       default:
         return [];
     }
+  }
+
+  Color _getAppBarBackgroundColor(BuildContext context) {
+    // Use a semi-transparent dark background for better visibility
+    return Colors.black.withOpacity(0.7);
+  }
+
+  Color _getAppBarTextColor(BuildContext context) {
+    // Always use white text for app bar for consistency
+    return Colors.white;
+  }
+
+  Color _getCardTextColor(BuildContext context) {
+    // Always use dark text for cards for better readability
+    return Colors.black87;
   }
 
   void _contactUs(BuildContext context) {

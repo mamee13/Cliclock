@@ -173,16 +173,16 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.dancingScript(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
-          const Shadow(color: Colors.black45, blurRadius: 10, offset: Offset(3, 3)),
-          const Shadow(color: Colors.black26, blurRadius: 20, offset: Offset(6, 6)),
+          const Shadow(color: Colors.white, blurRadius: 10, offset: Offset(3, 3)),
+          const Shadow(color: Colors.white70, blurRadius: 20, offset: Offset(6, 6)),
         ],
       ),
       bodyLarge: GoogleFonts.dancingScript(
-        color: Colors.white70,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
@@ -195,7 +195,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.amaticSc(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
@@ -203,7 +203,7 @@ class AppThemes {
         ],
       ),
       bodyLarge: GoogleFonts.amaticSc(
-        color: Colors.white70,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
@@ -216,7 +216,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.caveat(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
@@ -224,7 +224,7 @@ class AppThemes {
         ],
       ),
       bodyLarge: GoogleFonts.caveat(
-        color: Colors.white70,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
@@ -237,7 +237,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.satisfy(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
@@ -245,7 +245,7 @@ class AppThemes {
         ],
       ),
       bodyLarge: GoogleFonts.satisfy(
-        color: Colors.white70,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
@@ -280,7 +280,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.righteous(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
@@ -288,7 +288,7 @@ class AppThemes {
         ],
       ),
       bodyLarge: GoogleFonts.righteous(
-        color: Colors.white,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
@@ -301,7 +301,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.frederickaTheGreat(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
@@ -309,7 +309,7 @@ class AppThemes {
         ],
       ),
       bodyLarge: GoogleFonts.frederickaTheGreat(
-        color: Colors.white,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
@@ -322,7 +322,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.yesteryear(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
@@ -330,7 +330,7 @@ class AppThemes {
         ],
       ),
       bodyLarge: GoogleFonts.yesteryear(
-        color: Colors.white,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
@@ -409,7 +409,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.patrickHand(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
@@ -417,7 +417,7 @@ class AppThemes {
         ],
       ),
       bodyLarge: GoogleFonts.patrickHand(
-        color: Colors.white,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
@@ -430,7 +430,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.indieFlower(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
@@ -438,7 +438,7 @@ class AppThemes {
         ],
       ),
       bodyLarge: GoogleFonts.indieFlower(
-        color: Colors.white,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
@@ -451,7 +451,7 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
       displayLarge: GoogleFonts.cinzel(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w500,
         shadows: [
@@ -459,7 +459,7 @@ class AppThemes {
         ],
       ),
       bodyLarge: GoogleFonts.cinzel(
-        color: Colors.white,
+        color: Colors.black87,
         fontSize: 32,
         fontWeight: FontWeight.w400,
       ),
