@@ -75,13 +75,13 @@ class AppThemes {
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.lato(
         color: Colors.black,
         fontSize: 160,
         fontWeight: FontWeight.w300,
         shadows: [const Shadow(color: Colors.black26, blurRadius: 4, offset: Offset(2, 2))],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.lato(
         color: Colors.black54,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -94,13 +94,13 @@ class AppThemes {
     primaryColor: Colors.blueGrey,
     scaffoldBackgroundColor: Colors.black,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.montserrat(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w300,
         shadows: [const Shadow(color: Colors.white24, blurRadius: 4, offset: Offset(2, 2))],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.montserrat(
         color: Colors.white70,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -172,7 +172,7 @@ class AppThemes {
     primaryColor: Colors.purple,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.dancingScript(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -181,7 +181,7 @@ class AppThemes {
           const Shadow(color: Colors.black26, blurRadius: 20, offset: Offset(6, 6)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.dancingScript(
         color: Colors.white70,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -194,7 +194,7 @@ class AppThemes {
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.amaticSc(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -202,7 +202,7 @@ class AppThemes {
           Shadow(color: const Color(0xFF0D47A1), blurRadius: 15, offset: const Offset(4, 4)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.amaticSc(
         color: Colors.white70,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -215,7 +215,7 @@ class AppThemes {
     primaryColor: Colors.orange,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.caveat(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -223,7 +223,7 @@ class AppThemes {
           Shadow(color: const Color(0xFFB71C1C), blurRadius: 15, offset: const Offset(4, 4)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.caveat(
         color: Colors.white70,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -236,7 +236,7 @@ class AppThemes {
     primaryColor: Colors.green,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.satisfy(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -244,7 +244,7 @@ class AppThemes {
           Shadow(color: const Color(0xFF1B5E20), blurRadius: 15, offset: const Offset(4, 4)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.satisfy(
         color: Colors.white70,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -279,7 +279,7 @@ class AppThemes {
     primaryColor: Colors.red,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.righteous(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -287,7 +287,7 @@ class AppThemes {
           Shadow(color: const Color(0xFFFF4500), blurRadius: 15, offset: const Offset(4, 4)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.righteous(
         color: Colors.white,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -300,7 +300,7 @@ class AppThemes {
     primaryColor: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.frederickaTheGreat(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -308,7 +308,7 @@ class AppThemes {
           Shadow(color: const Color(0xFF00BFFF), blurRadius: 15, offset: const Offset(4, 4)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.frederickaTheGreat(
         color: Colors.white,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -321,7 +321,7 @@ class AppThemes {
     primaryColor: Colors.amber,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.yesteryear(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -329,7 +329,7 @@ class AppThemes {
           Shadow(color: const Color(0xFFD2691E), blurRadius: 15, offset: const Offset(4, 4)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.yesteryear(
         color: Colors.white,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -364,7 +364,7 @@ class AppThemes {
     primaryColor: Colors.green,
     scaffoldBackgroundColor: Colors.black,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.greatVibes(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -373,7 +373,7 @@ class AppThemes {
           const Shadow(color: Colors.blueAccent, blurRadius: 25, offset: Offset(0, 0)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.greatVibes(
         color: Colors.white70,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -386,7 +386,7 @@ class AppThemes {
     primaryColor: Colors.grey,
     scaffoldBackgroundColor: Colors.black,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.bungee(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -395,7 +395,7 @@ class AppThemes {
           const Shadow(color: Colors.white, blurRadius: 30, offset: Offset(0, 0)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.bungee(
         color: Colors.white70,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -408,7 +408,7 @@ class AppThemes {
     primaryColor: Colors.green,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.patrickHand(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -416,7 +416,7 @@ class AppThemes {
           Shadow(color: const Color(0xFF228B22), blurRadius: 15, offset: const Offset(4, 4)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.patrickHand(
         color: Colors.white,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -429,7 +429,7 @@ class AppThemes {
     primaryColor: Colors.pink,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.indieFlower(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -437,7 +437,7 @@ class AppThemes {
           const Shadow(color: Colors.pinkAccent, blurRadius: 15, offset: Offset(4, 4)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.indieFlower(
         color: Colors.white,
         fontSize: 32,
         fontWeight: FontWeight.w400,
@@ -450,7 +450,7 @@ class AppThemes {
     primaryColor: Colors.brown,
     scaffoldBackgroundColor: Colors.white,
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
+      displayLarge: GoogleFonts.cinzel(
         color: Colors.white,
         fontSize: 160,
         fontWeight: FontWeight.w500,
@@ -458,7 +458,7 @@ class AppThemes {
           Shadow(color: const Color(0xFF8B4513), blurRadius: 15, offset: const Offset(4, 4)),
         ],
       ),
-      bodyLarge: GoogleFonts.roboto(
+      bodyLarge: GoogleFonts.cinzel(
         color: Colors.white,
         fontSize: 32,
         fontWeight: FontWeight.w400,
