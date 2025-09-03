@@ -89,8 +89,8 @@ class _ClockScreenState extends State<ClockScreen> {
               opacity: _showSettingsButton ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 300),
               child: Positioned(
-                top: 50,
-                right: 30,
+                bottom: 80,
+                right: 120,
                 child: FloatingActionButton(
                   backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
                   elevation: 8,

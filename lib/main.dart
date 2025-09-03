@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'providers/settings_provider.dart';
 import 'screens/clock_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/contact_screen.dart';
 import 'themes.dart';
 
 void main() async {
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
             routes: {
               '/': (context) => const ClockScreen(),
               '/settings': (context) => const SettingsScreen(),
+              '/contact': (context) => const ContactScreen(),
             },
           );
         },

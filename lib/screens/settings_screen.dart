@@ -62,7 +62,7 @@ class SettingsScreen extends StatelessWidget {
               icon: Icons.contact_mail,
               title: 'Contact Us',
               subtitle: 'Get in touch with us',
-              onTap: () => _contactUs(context),
+              onTap: () => Navigator.pushNamed(context, '/contact'),
             ),
           ],
         ),
@@ -98,20 +98,45 @@ class SettingsScreen extends StatelessWidget {
         title: const Text('Select Theme', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
         content: SizedBox(
           width: double.maxFinite,
-          child: Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            children: AppThemes.getThemeNames().map((theme) => ElevatedButton(
-              onPressed: () {
-                provider.setTheme(theme);
-                Navigator.pop(context);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: provider.settings.theme == theme ? Theme.of(context).primaryColor : null,
-                foregroundColor: provider.settings.theme == theme ? Colors.white : null,
-              ),
-              child: Text(theme),
-            )).toList(),
+          height: 300,
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 2,
+            ),
+            itemCount: AppThemes.getThemeNames().length,
+            itemBuilder: (context, index) {
+              final theme = AppThemes.getThemeNames()[index];
+              final isSelected = provider.settings.theme == theme;
+              return GestureDetector(
+                onTap: () {
+                  provider.setTheme(theme);
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: _getThemeColor(theme),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: isSelected ? Theme.of(context).primaryColor : Colors.transparent,
+                      width: 3,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      theme,
+                      style: TextStyle(
+                        color: _getTextColor(theme),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
         actions: [
@@ -122,6 +147,40 @@ class SettingsScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Color _getThemeColor(String theme) {
+    switch (theme) {
+      case 'light':
+        return Colors.white;
+      case 'dark':
+        return Colors.black;
+      case 'neon':
+        return Colors.black;
+      case 'retro':
+        return const Color(0xFFFFF8E1);
+      case 'minimal':
+        return Colors.white;
+      default:
+        return Colors.grey;
+    }
+  }
+
+  Color _getTextColor(String theme) {
+    switch (theme) {
+      case 'light':
+        return Colors.black;
+      case 'dark':
+        return Colors.white;
+      case 'neon':
+        return Colors.greenAccent;
+      case 'retro':
+        return Colors.brown;
+      case 'minimal':
+        return Colors.black;
+      default:
+        return Colors.black;
+    }
   }
 
   void _contactUs(BuildContext context) {

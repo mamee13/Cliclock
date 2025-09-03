@@ -116,7 +116,6 @@ class AppThemes {
         color: Colors.black,
         fontSize: 180,
         fontWeight: FontWeight.w200,
-        letterSpacing: 2.0,
       ),
       bodyLarge: GoogleFonts.inter(
         color: Colors.black38,
