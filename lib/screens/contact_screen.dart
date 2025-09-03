@@ -18,42 +18,44 @@ class ContactScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         foregroundColor: Theme.of(context).textTheme.displayLarge?.color,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: orientation == Orientation.portrait
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: _buildContactContent(context),
-              )
-            : Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Get in Touch',
-                          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 20),
-                        const Text(
-                          'We\'d love to hear from you! Reach out for support, feedback, or any questions.',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0).copyWith(bottom: 100),
+          child: orientation == Orientation.portrait
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: _buildContactContent(context),
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Get in Touch',
+                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 20),
+                          const Text(
+                            'We\'d love to hear from you! Reach out for support, feedback, or any questions.',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 40),
-                  Expanded(
-                    flex: 2,
-                    child: Column(
-                      children: _buildContactItems(context),
+                    const SizedBox(width: 40),
+                    Expanded(
+                      flex: 2,
+                      child: Column(
+                        children: _buildContactItems(context),
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+        ),
       ),
     );
   }

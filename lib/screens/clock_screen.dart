@@ -31,7 +31,10 @@ class _ClockScreenState extends State<ClockScreen> {
   @override
   void dispose() {
     _timer.cancel();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: SystemUiOverlay.values,
+    );
     super.dispose();
   }
 
@@ -41,7 +44,9 @@ class _ClockScreenState extends State<ClockScreen> {
     final now = DateTime.now();
     final timeFormat = settings.showSeconds ? 'HH:mm:ss' : 'HH:mm';
     final time = DateFormat(timeFormat).format(now);
-    final date = settings.showDate ? DateFormat('EEEE, MMMM d, y').format(now) : null;
+    final date = settings.showDate
+        ? DateFormat('EEEE, MMMM d, y').format(now)
+        : null;
 
     return Scaffold(
       body: GestureDetector(
@@ -88,14 +93,18 @@ class _ClockScreenState extends State<ClockScreen> {
             AnimatedOpacity(
               opacity: _showSettingsButton ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 300),
-              child: Positioned(
-                bottom: 80,
-                right: 120,
-                child: FloatingActionButton(
-                  backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
-                  elevation: 8,
-                  onPressed: () => Navigator.pushNamed(context, '/settings'),
-                  child: const Icon(Icons.settings, size: 28),
+              child: SafeArea(
+                child: Positioned(
+                  bottom: 24, // Increased space from bottom
+                  right: 24, // Increased space from right
+                  child: FloatingActionButton(
+                    backgroundColor: Theme.of(
+                      context,
+                    ).primaryColor.withOpacity(0.8),
+                    elevation: 8,
+                    onPressed: () => Navigator.pushNamed(context, '/settings'),
+                    child: const Icon(Icons.settings, size: 28),
+                  ),
                 ),
               ),
             ),
