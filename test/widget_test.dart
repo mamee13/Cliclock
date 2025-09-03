@@ -19,7 +19,7 @@ void main() {
     await settingsProvider.loadSettings();
 
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp(settingsProvider: settingsProvider));
+    await tester.pumpWidget(MyApp(settingsProvider: settingsProvider, showOnboarding: false));
 
     // Verify that the clock screen is displayed
     expect(find.byType(ClockScreen), findsOneWidget);
