@@ -57,7 +57,7 @@ class _ClockScreenState extends State<ClockScreen> {
         },
         child: Stack(
           children: [
-            // Background gradient for neon theme
+            // Background gradients for themes
             if (settings.theme == AppThemes.neon)
               Container(
                 decoration: const BoxDecoration(
@@ -65,6 +65,56 @@ class _ClockScreenState extends State<ClockScreen> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [Colors.black, Color(0xFF0D0D0D)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.gradient)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.purple, Colors.pink, Colors.orange],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.ocean)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFF006994), Color(0xFF00D4FF)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.sunset)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFFFF6B35), Color(0xFFF7931E), Color(0xFFFFDC00)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.forest)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFF0B6623), Color(0xFF228B22), Color(0xFF90EE90)],
+                  ),
+                ),
+              )
+            else if (settings.theme == AppThemes.cosmic)
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFF0F0F23), Color(0xFF1a1a2e), Color(0xFF16213e)],
                   ),
                 ),
               ),

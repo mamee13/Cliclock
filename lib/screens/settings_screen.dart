@@ -161,6 +161,16 @@ class SettingsScreen extends StatelessWidget {
         return const Color(0xFFFFF8E1);
       case 'minimal':
         return Colors.white;
+      case 'gradient':
+        return Colors.purple;
+      case 'ocean':
+        return const Color(0xFF006994);
+      case 'sunset':
+        return const Color(0xFFFF6B35);
+      case 'forest':
+        return const Color(0xFF0B6623);
+      case 'cosmic':
+        return const Color(0xFF0F0F23);
       default:
         return Colors.grey;
     }
@@ -178,6 +188,16 @@ class SettingsScreen extends StatelessWidget {
         return Colors.brown;
       case 'minimal':
         return Colors.black;
+      case 'gradient':
+        return Colors.white;
+      case 'ocean':
+        return Colors.white;
+      case 'sunset':
+        return Colors.white;
+      case 'forest':
+        return Colors.white;
+      case 'cosmic':
+        return Colors.white;
       default:
         return Colors.black;
     }
