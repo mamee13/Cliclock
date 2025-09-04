@@ -234,17 +234,31 @@ class _ClockScreenState extends State<ClockScreen> {
               opacity: _showSettingsButton ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 300),
               child: SafeArea(
-                child: Positioned(
-                  bottom: 24, // Increased space from bottom
-                  right: 24, // Increased space from right
-                  child: FloatingActionButton(
-                    backgroundColor: Theme.of(
-                      context,
-                    ).primaryColor.withOpacity(0.8),
-                    elevation: 8,
-                    onPressed: () => Navigator.pushNamed(context, '/settings'),
-                    child: const Icon(Icons.settings, size: 28),
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 24, bottom: 16),
+                      child: FloatingActionButton(
+                        heroTag: "timer",
+                        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
+                        elevation: 8,
+                        onPressed: () => Navigator.pushNamed(context, '/timer'),
+                        child: const Icon(Icons.timer, size: 28),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 24, bottom: 24),
+                      child: FloatingActionButton(
+                        heroTag: "settings",
+                        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
+                        elevation: 8,
+                        onPressed: () => Navigator.pushNamed(context, '/settings'),
+                        child: const Icon(Icons.settings, size: 28),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

@@ -8,6 +8,7 @@ import 'screens/clock_screen.dart';
 import 'screens/onboarding_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/contact_screen.dart';
+import 'screens/timer_screen.dart';
 import 'themes.dart';
 
 void main() async {
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
               '/onboarding': (context) => const OnboardingScreen(),
               '/settings': (context) => const SettingsScreen(),
               '/contact': (context) => const ContactScreen(),
+              '/timer': (context) => const TimerScreen(),
             },
           );
         },
