@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG to PNG Converter</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .preview {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .sizes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .size-item {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin: 5px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cliclock Logo - SVG to PNG Converter</h1>
+        
+        <div class="preview">
+            <h3>Original SVG</h3>
+            <div id="svg-container"></div>
+        </div>
+        
+        <div class="sizes">
+            <div class="size-item">
+                <h4>1024x1024</h4>
+                <canvas id="canvas-1024" width="1024" height="1024"></canvas>
+                <br>
+                <button onclick="downloadPNG('canvas-1024', 'cliclock_logo_1024.png')">Download</button>
+            </div>
+            
+            <div class="size-item">
+                <h4>512x512</h4>
+                <canvas id="canvas-512" width="512" height="512"></canvas>
+                <br>
+                <button onclick="downloadPNG('canvas-512', 'cliclock_logo_512.png')">Download</button>
+            </div>
+            
+            <div class="size-item">
+                <h4>192x192</h4>
+                <canvas id="canvas-192" width="192" height="192"></canvas>
+                <br>
+                <button onclick="downloadPNG('canvas-192', 'cliclock_logo_192.png')">Download</button>
+            </div>
+            
+            <div class="size-item">
+                <h4>144x144</h4>
+                <canvas id="canvas-144" width="144" height="144"></canvas>
+                <br>
+                <button onclick="downloadPNG('canvas-144', 'cliclock_logo_144.png')">Download</button>
+            </div>
+            
+            <div class="size-item">
+                <h4>96x96</h4>
+                <canvas id="canvas-96" width="96" height="96"></canvas>
+                <br>
+                <button onclick="downloadPNG('canvas-96', 'cliclock_logo_96.png')">Download</button>
+            </div>
+            
+            <div class="size-item">
+                <h4>72x72</h4>
+                <canvas id="canvas-72" width="72" height="72"></canvas>
+                <br>
+                <button onclick="downloadPNG('canvas-72', 'cliclock_logo_72.png')">Download</button>
+            </div>
+            
+            <div class="size-item">
+                <h4>48x48</h4>
+                <canvas id="canvas-48" width="48" height="48"></canvas>
+                <br>
+                <button onclick="downloadPNG('canvas-48', 'cliclock_logo_48.png')">Download</button>
+            </div>
+        </div>
+        
+        <button onclick="downloadAllSizes()">Download All Sizes</button>
+    </div>
+
+    <script>
+        // Load and display the SVG
+        fetch('cliclock_logo.svg')
+            .then(response => response.text())
+            .then(svgText => {
+                document.getElementById('svg-container').innerHTML = svgText;
+                
+                // Convert to different sizes
+                const sizes = [1024, 512, 192, 144, 96, 72, 48];
+                sizes.forEach(size => {
+                    convertSVGToPNG(svgText, size, `canvas-${size}`);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading SVG:', error);
+                document.getElementById('svg-container').innerHTML = '<p>Error loading SVG file</p>';
+            });
+
+        function convertSVGToPNG(svgText, size, canvasId) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Create an image from SVG
+            const img = new Image();
+            const svgBlob = new Blob([svgText], {type: 'image/svg+xml;charset=utf-8'});
+            const url = URL.createObjectURL(svgBlob);
+            
+            img.onload = function() {
+                // Clear canvas and draw image
+                ctx.clearRect(0, 0, size, size);
+                ctx.drawImage(img, 0, 0, size, size);
+                URL.revokeObjectURL(url);
+            };
+            
+            img.src = url;
+        }
+
+        function downloadPNG(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function downloadAllSizes() {
+            const sizes = [1024, 512, 192, 144, 96, 72, 48];
+            sizes.forEach((size, index) => {
+                setTimeout(() => {
+                    downloadPNG(`canvas-${size}`, `cliclock_logo_${size}.png`);
+                }, index * 500); // Delay each download by 500ms
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for the outer ring -->
+    <linearGradient id="outerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient for the inner circle -->
+    <linearGradient id="innerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient for clock hands and text -->
+    <linearGradient id="handGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Text gradient -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Text glow effect -->
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle with gradient -->
+  <circle cx="256" cy="256" r="240" fill="url(#outerGradient)" filter="url(#glow)"/>
+  
+  <!-- Inner circle -->
+  <circle cx="256" cy="256" r="200" fill="url(#innerGradient)"/>
+  
+  <!-- Hour markers -->
+  <g stroke="url(#handGradient)" stroke-width="4" stroke-linecap="round">
+    <!-- 12 o'clock -->
+    <line x1="256" y1="76" x2="256" y2="96" />
+    <!-- 3 o'clock -->
+    <line x1="436" y1="256" x2="416" y2="256" />
+    <!-- 6 o'clock -->
+    <line x1="256" y1="436" x2="256" y2="416" />
+    <!-- 9 o'clock -->
+    <line x1="76" y1="256" x2="96" y2="256" />
+  </g>
+  
+  <!-- Minute markers -->
+  <g stroke="url(#handGradient)" stroke-width="2" stroke-linecap="round" opacity="0.6">
+    <!-- 1 o'clock -->
+    <line x1="346.4" y1="109.6" x2="336.8" y2="119.2" />
+    <!-- 2 o'clock -->
+    <line x1="402.4" y1="165.6" x2="392.8" y2="175.2" />
+    <!-- 4 o'clock -->
+    <line x1="402.4" y1="346.4" x2="392.8" y2="336.8" />
+    <!-- 5 o'clock -->
+    <line x1="346.4" y1="402.4" x2="336.8" y2="392.8" />
+    <!-- 7 o'clock -->
+    <line x1="165.6" y1="402.4" x2="175.2" y2="392.8" />
+    <!-- 8 o'clock -->
+    <line x1="109.6" y1="346.4" x2="119.2" y2="336.8" />
+    <!-- 10 o'clock -->
+    <line x1="109.6" y1="165.6" x2="119.2" y2="175.2" />
+    <!-- 11 o'clock -->
+    <line x1="165.6" y1="109.6" x2="175.2" y2="119.2" />
+  </g>
+  
+  <!-- Clock hands showing 10:10 (classic watch advertisement time) -->
+  <!-- Hour hand -->
+  <line x1="256" y1="256" x2="206" y2="156" stroke="url(#handGradient)" stroke-width="8" stroke-linecap="round" filter="url(#glow)"/>
+  
+  <!-- Minute hand -->
+  <line x1="256" y1="256" x2="306" y2="156" stroke="url(#handGradient)" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+  
+  <!-- Center dot -->
+  <circle cx="256" cy="256" r="12" fill="url(#handGradient)" filter="url(#glow)"/>
+  
+  <!-- App name "CLICLOCK" -->
+  <text x="256" y="320" text-anchor="middle" fill="url(#textGradient)" font-family="Arial, sans-serif" font-size="28" font-weight="bold" filter="url(#textGlow)">CLICLOCK</text>
+  
+  <!-- Tagline -->
+  <text x="256" y="345" text-anchor="middle" fill="url(#handGradient)" font-family="Arial, sans-serif" font-size="14" opacity="0.8">Smart Time Management</text>
+  
+  <!-- Decorative elements - small dots around the center -->
+  <g fill="url(#handGradient)" opacity="0.4">
+    <circle cx="226" cy="226" r="2"/>
+    <circle cx="286" cy="226" r="2"/>
+    <circle cx="286" cy="286" r="2"/>
+    <circle cx="226" cy="286" r="2"/>
+  </g>
+</svg>

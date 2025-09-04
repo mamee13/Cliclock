@@ -12,7 +12,18 @@ class SettingsScreen extends StatelessWidget {
     final settingsProvider = context.watch<SettingsProvider>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: _getAppBarTextColor(context))),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/icons/cliclock_logo.png',
+              width: 32,
+              height: 32,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(width: 12),
+            Text('Settings', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: _getAppBarTextColor(context))),
+          ],
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, size: 28, color: _getAppBarTextColor(context)),
           onPressed: () => Navigator.pop(context),

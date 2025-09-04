@@ -152,7 +152,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Icon
+              // Icon or Logo
               Container(
                 width: 120,
                 height: 120,
@@ -160,11 +160,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   color: Colors.white.withOpacity(0.2),
                   shape: BoxShape.circle,
                 ),
-                child: Icon(
-                  pageData.icon,
-                  size: 60,
-                  color: Colors.white,
-                ),
+                child: _currentPage == 0
+                    ? ClipOval(
+                        child: Container(
+                          padding: const EdgeInsets.all(20),
+                          child: Image.asset(
+                            'assets/icons/cliclock_logo.png',
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      )
+                    : Icon(
+                        pageData.icon,
+                        size: 60,
+                        color: Colors.white,
+                      ),
               ),
               const SizedBox(height: 40),
               // Title
