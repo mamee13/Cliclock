@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../providers/settings_provider.dart';
 import '../themes.dart';
@@ -18,6 +19,7 @@ class _TimerScreenState extends State<TimerScreen> {
   bool _isRunning = false;
   bool _isCountDown = false;
   int _initialSeconds = 0;
+  bool _showHeader = true;
   
   final TextEditingController _minutesController = TextEditingController();
   final TextEditingController _secondsController = TextEditingController();
@@ -84,10 +86,14 @@ class _TimerScreenState extends State<TimerScreen> {
   }
 
   void _setCountUpTimer() {
+    final minutes = int.tryParse(_minutesController.text) ?? 0;
+    final seconds = int.tryParse(_secondsController.text) ?? 0;
+    final totalSeconds = (minutes * 60) + seconds;
+    
     setState(() {
       _isCountDown = false;
-      _seconds = 0;
-      _initialSeconds = 0;
+      _seconds = totalSeconds;
+      _initialSeconds = totalSeconds;
     });
     Navigator.pop(context);
   }
@@ -101,107 +107,130 @@ class _TimerScreenState extends State<TimerScreen> {
       builder: (context) => Dialog(
         backgroundColor: _getDialogBackgroundColor(),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Container(
-          constraints: const BoxConstraints(maxWidth: 400, maxHeight: 350),
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Setup Timer',
-                style: TextStyle(
-                  color: _getTextColor(),
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 400),
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Setup Timer',
+                  style: _getThemeTextStyle().copyWith(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _minutesController,
-                      keyboardType: TextInputType.number,
-                      style: TextStyle(color: _getTextColor()),
-                      decoration: InputDecoration(
-                        labelText: 'Minutes',
-                        labelStyle: TextStyle(color: _getTextColor().withOpacity(0.7)),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: _getTextColor().withOpacity(0.3)),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: _getAccentColor()),
-                          borderRadius: BorderRadius.circular(10),
+                const SizedBox(height: 16),
+                Text(
+                  'Enter time for both modes:',
+                  style: _getThemeTextStyle().copyWith(
+                    fontSize: 14,
+                    color: _getTextColor().withOpacity(0.7),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _minutesController,
+                        keyboardType: TextInputType.number,
+                        style: _getThemeTextStyle().copyWith(fontSize: 16),
+                        decoration: InputDecoration(
+                          labelText: 'Minutes',
+                          labelStyle: _getThemeTextStyle().copyWith(
+                            fontSize: 12,
+                            color: _getTextColor().withOpacity(0.7),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: _getTextColor().withOpacity(0.3)),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: _getAccentColor()),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          isDense: true,
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: TextField(
-                      controller: _secondsController,
-                      keyboardType: TextInputType.number,
-                      style: TextStyle(color: _getTextColor()),
-                      decoration: InputDecoration(
-                        labelText: 'Seconds',
-                        labelStyle: TextStyle(color: _getTextColor().withOpacity(0.7)),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: _getTextColor().withOpacity(0.3)),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: _getAccentColor()),
-                          borderRadius: BorderRadius.circular(10),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: TextField(
+                        controller: _secondsController,
+                        keyboardType: TextInputType.number,
+                        style: _getThemeTextStyle().copyWith(fontSize: 16),
+                        decoration: InputDecoration(
+                          labelText: 'Seconds',
+                          labelStyle: _getThemeTextStyle().copyWith(
+                            fontSize: 12,
+                            color: _getTextColor().withOpacity(0.7),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: _getTextColor().withOpacity(0.3)),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: _getAccentColor()),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          isDense: true,
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              Wrap(
-                spacing: 12,
-                runSpacing: 12,
-                alignment: WrapAlignment.center,
-                children: [
-                  ElevatedButton.icon(
+                  ],
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton.icon(
                     onPressed: _setCountUpTimer,
-                    icon: const Icon(Icons.play_arrow, size: 18),
-                    label: const Text('Count Up'),
+                    icon: const Icon(Icons.play_arrow, size: 16),
+                    label: Text('Count Up', style: _getThemeTextStyle().copyWith(fontSize: 13)),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: _getAccentColor(),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
                     ),
                   ),
-                  ElevatedButton.icon(
-                    onPressed: _setCountDownTimer,
-                    icon: const Icon(Icons.timer, size: 18),
-                    label: const Text('Count Down'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: _getAccentColor(),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(
-                  'Cancel',
-                  style: TextStyle(color: _getTextColor()),
                 ),
-              ),
-            ],
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton.icon(
+                    onPressed: _setCountDownTimer,
+                    icon: const Icon(Icons.timer, size: 16),
+                    label: Text('Count Down', style: _getThemeTextStyle().copyWith(fontSize: 13)),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: _getAccentColor(),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(
+                    'Cancel',
+                    style: _getThemeTextStyle().copyWith(
+                      fontSize: 13,
+                      color: _getTextColor(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -215,16 +244,15 @@ class _TimerScreenState extends State<TimerScreen> {
         backgroundColor: _getDialogBackgroundColor(),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Container(
-          constraints: const BoxConstraints(maxWidth: 300, maxHeight: 200),
+          constraints: const BoxConstraints(maxWidth: 320),
           padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 'Timer Finished!',
-                style: TextStyle(
-                  color: _getTextColor(),
-                  fontSize: 24,
+                style: _getThemeTextStyle().copyWith(
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -232,9 +260,8 @@ class _TimerScreenState extends State<TimerScreen> {
               const SizedBox(height: 16),
               Text(
                 'Your countdown timer has reached zero.',
-                style: TextStyle(
-                  color: _getTextColor(),
-                  fontSize: 16,
+                style: _getThemeTextStyle().copyWith(
+                  fontSize: 18,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -249,7 +276,7 @@ class _TimerScreenState extends State<TimerScreen> {
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
-                child: const Text('OK'),
+                child: Text('OK', style: _getThemeTextStyle().copyWith(fontSize: 16)),
               ),
             ],
           ),
@@ -317,7 +344,23 @@ class _TimerScreenState extends State<TimerScreen> {
     switch (theme) {
       case 'light':
       case 'minimal':
+      case 'gradient':
+      case 'ocean':
+      case 'sunset':
+      case 'forest':
+      case 'fire':
+      case 'ice':
+      case 'desert':
+      case 'meadow':
+      case 'candy':
+      case 'vintage':
         return Colors.black;
+      case 'dark':
+      case 'cosmic':
+      case 'galaxy':
+      case 'aurora':
+      case 'storm':
+        return Colors.white;
       case 'neon':
         return Colors.greenAccent;
       case 'retro':
@@ -376,15 +419,109 @@ class _TimerScreenState extends State<TimerScreen> {
     
     switch (theme) {
       case 'neon':
-        return [Shadow(color: Colors.greenAccent, blurRadius: 20)];
+        return [
+          const Shadow(color: Colors.greenAccent, blurRadius: 20, offset: Offset(0, 0)),
+          const Shadow(color: Colors.greenAccent, blurRadius: 40, offset: Offset(0, 0)),
+        ];
       case 'cosmic':
-        return [Shadow(color: Colors.purpleAccent, blurRadius: 15)];
+        return [
+          const Shadow(color: Colors.purpleAccent, blurRadius: 20, offset: Offset(0, 0)),
+          const Shadow(color: Colors.blueAccent, blurRadius: 30, offset: Offset(0, 0)),
+        ];
       case 'galaxy':
-        return [Shadow(color: Colors.pinkAccent, blurRadius: 15)];
+        return [
+          const Shadow(color: Colors.pinkAccent, blurRadius: 20, offset: Offset(0, 0)),
+          const Shadow(color: Colors.purpleAccent, blurRadius: 30, offset: Offset(0, 0)),
+        ];
       case 'aurora':
-        return [Shadow(color: Colors.greenAccent, blurRadius: 15)];
+        return [
+          const Shadow(color: Colors.greenAccent, blurRadius: 15, offset: Offset(0, 0)),
+          const Shadow(color: Colors.blueAccent, blurRadius: 25, offset: Offset(0, 0)),
+        ];
+      case 'storm':
+        return [
+          const Shadow(color: Colors.blueGrey, blurRadius: 20, offset: Offset(0, 0)),
+          const Shadow(color: Colors.white, blurRadius: 30, offset: Offset(0, 0)),
+        ];
+      case 'light':
+        return [const Shadow(color: Colors.black26, blurRadius: 4, offset: Offset(2, 2))];
+      case 'dark':
+        return [const Shadow(color: Colors.white24, blurRadius: 4, offset: Offset(2, 2))];
+      case 'retro':
+        return [const Shadow(color: Colors.brown, blurRadius: 2, offset: Offset(1, 1))];
+      case 'gradient':
+        return [
+          const Shadow(color: Colors.white, blurRadius: 10, offset: Offset(3, 3)),
+          const Shadow(color: Colors.white70, blurRadius: 20, offset: Offset(6, 6)),
+        ];
+      case 'ocean':
+        return [Shadow(color: const Color(0xFF0D47A1), blurRadius: 15, offset: const Offset(4, 4))];
+      case 'sunset':
+        return [Shadow(color: const Color(0xFFB71C1C), blurRadius: 15, offset: const Offset(4, 4))];
+      case 'forest':
+        return [Shadow(color: const Color(0xFF1B5E20), blurRadius: 15, offset: const Offset(4, 4))];
+      case 'fire':
+        return [Shadow(color: const Color(0xFFFF4500), blurRadius: 15, offset: const Offset(4, 4))];
+      case 'ice':
+        return [Shadow(color: const Color(0xFF00BFFF), blurRadius: 15, offset: const Offset(4, 4))];
+      case 'desert':
+        return [Shadow(color: const Color(0xFFD2691E), blurRadius: 15, offset: const Offset(4, 4))];
+      case 'meadow':
+        return [Shadow(color: const Color(0xFF228B22), blurRadius: 15, offset: const Offset(4, 4))];
+      case 'candy':
+        return [const Shadow(color: Colors.pinkAccent, blurRadius: 15, offset: Offset(4, 4))];
+      case 'vintage':
+        return [Shadow(color: const Color(0xFF8B4513), blurRadius: 15, offset: const Offset(4, 4))];
       default:
         return [];
+    }
+  }
+
+  TextStyle _getThemeTextStyle() {
+    final settingsProvider = context.watch<SettingsProvider>();
+    final theme = settingsProvider.settings.theme;
+    
+    switch (theme) {
+      case 'light':
+        return GoogleFonts.lato(color: _getTextColor());
+      case 'dark':
+        return GoogleFonts.montserrat(color: _getTextColor());
+      case 'neon':
+        return GoogleFonts.orbitron(color: _getTextColor());
+      case 'retro':
+        return GoogleFonts.pressStart2p(color: _getTextColor());
+      case 'minimal':
+        return GoogleFonts.inter(color: _getTextColor());
+      case 'gradient':
+        return GoogleFonts.dancingScript(color: _getTextColor());
+      case 'ocean':
+        return GoogleFonts.amaticSc(color: _getTextColor());
+      case 'sunset':
+        return GoogleFonts.caveat(color: _getTextColor());
+      case 'forest':
+        return GoogleFonts.satisfy(color: _getTextColor());
+      case 'cosmic':
+        return GoogleFonts.orbitron(color: _getTextColor());
+      case 'fire':
+        return GoogleFonts.righteous(color: _getTextColor());
+      case 'ice':
+        return GoogleFonts.frederickaTheGreat(color: _getTextColor());
+      case 'desert':
+        return GoogleFonts.yesteryear(color: _getTextColor());
+      case 'galaxy':
+        return GoogleFonts.orbitron(color: _getTextColor());
+      case 'aurora':
+        return GoogleFonts.greatVibes(color: _getTextColor());
+      case 'storm':
+        return GoogleFonts.bungee(color: _getTextColor());
+      case 'meadow':
+        return GoogleFonts.patrickHand(color: _getTextColor());
+      case 'candy':
+        return GoogleFonts.indieFlower(color: _getTextColor());
+      case 'vintage':
+        return GoogleFonts.cinzel(color: _getTextColor());
+      default:
+        return GoogleFonts.lato(color: _getTextColor());
     }
   }
 
@@ -541,82 +678,98 @@ class _TimerScreenState extends State<TimerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          _buildGradientBackground(),
-          SafeArea(
-            child: Column(
-              children: [
-                // Header
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () => Navigator.pop(context),
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: _getTextColor(),
-                          size: 28,
-                        ),
+      body: GestureDetector(
+        onTap: () {
+          setState(() {
+            _showHeader = !_showHeader;
+          });
+        },
+        child: Stack(
+          children: [
+            _buildGradientBackground(),
+            SafeArea(
+              child: Column(
+                children: [
+                  // Header
+                  AnimatedOpacity(
+                    opacity: _showHeader ? 1.0 : 0.0,
+                    duration: const Duration(milliseconds: 300),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: () => Navigator.pop(context),
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: _getTextColor(),
+                              size: 28,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Image.asset(
+                            'assets/icons/cliclock_logo.png',
+                            width: 32,
+                            height: 32,
+                            fit: BoxFit.contain,
+                          ),
+                          const SizedBox(width: 12),
+                          Text(
+                            'Timer',
+                            style: _getThemeTextStyle().copyWith(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: _getTextColor(),
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 12),
-                      Image.asset(
-                        'assets/icons/cliclock_logo.png',
-                        width: 32,
-                        height: 32,
-                        fit: BoxFit.contain,
-                      ),
-                      const SizedBox(width: 12),
-                      Text(
-                        'Timer',
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: _getTextColor(),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-                
-                // Timer Display
-                Expanded(
-                  child: SingleChildScrollView(
+                  
+                  // Timer Display
+                  Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(height: 40),
+                          // Top spacer
+                          const Expanded(flex: 1, child: SizedBox()),
+                          
+                          // Timer type label
                           Text(
                             _isCountDown ? 'COUNTDOWN' : 'STOPWATCH',
-                            style: TextStyle(
-                              fontSize: 24,
+                            style: _getThemeTextStyle().copyWith(
+                              fontSize: 32,
                               fontWeight: FontWeight.w600,
                               color: _getTextColor().withOpacity(0.8),
                               letterSpacing: 2,
                             ),
                           ),
-                          const SizedBox(height: 40),
+                          
+                          // Middle spacer
+                          const Expanded(flex: 2, child: SizedBox()),
+                          
+                          // Timer display
                           FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Text(
                               _formatTime(_seconds),
-                              style: TextStyle(
-                                fontSize: 80,
+                              style: _getThemeTextStyle().copyWith(
+                                fontSize: 140,
                                 fontWeight: FontWeight.bold,
                                 color: _getTextColor(),
                                 shadows: _getTextShadows(),
-                                fontFamily: 'monospace',
                               ),
                             ),
                           ),
-                          const SizedBox(height: 60),
+                          
+                          // Bottom spacer
+                          const Expanded(flex: 2, child: SizedBox()),
                           
                           // Control Buttons
                           Wrap(
-                            spacing: 16,
+                            spacing: 20,
                             runSpacing: 16,
                             alignment: WrapAlignment.center,
                             children: [
@@ -624,35 +777,37 @@ class _TimerScreenState extends State<TimerScreen> {
                                 onPressed: _showTimerSetupDialog,
                                 backgroundColor: _getAccentColor(),
                                 foregroundColor: Colors.white,
-                                icon: const Icon(Icons.settings, size: 20),
-                                label: const Text('Setup'),
+                                icon: const Icon(Icons.settings, size: 22),
+                                label: Text('Setup', style: _getThemeTextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.w500)),
                               ),
                               FloatingActionButton.extended(
                                 onPressed: _isRunning ? _stopTimer : _startTimer,
                                 backgroundColor: _isRunning ? Colors.red : Colors.green,
                                 foregroundColor: Colors.white,
-                                icon: Icon(_isRunning ? Icons.pause : Icons.play_arrow, size: 20),
-                                label: Text(_isRunning ? 'Pause' : 'Start'),
+                                icon: Icon(_isRunning ? Icons.pause : Icons.play_arrow, size: 22),
+                                label: Text(_isRunning ? 'Pause' : 'Start', style: _getThemeTextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.w500)),
                               ),
                               FloatingActionButton.extended(
                                 onPressed: _resetTimer,
                                 backgroundColor: _getAccentColor().withOpacity(0.7),
                                 foregroundColor: Colors.white,
-                                icon: const Icon(Icons.refresh, size: 20),
-                                label: const Text('Reset'),
+                                icon: const Icon(Icons.refresh, size: 22),
+                                label: Text('Reset', style: _getThemeTextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.w500)),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 40),
+                          
+                          // Bottom padding
+                          const SizedBox(height: 30),
                         ],
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
