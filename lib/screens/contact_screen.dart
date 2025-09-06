@@ -40,7 +40,7 @@ class ContactScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           const Text(
-                            'We\'d love to hear from you! Reach out for support, feedback, or any questions.',
+                            'I\'d love to hear from you! Reach out for support, feedback, or any questions.',
                             style: TextStyle(fontSize: 16),
                           ),
                         ],
@@ -68,7 +68,7 @@ class ContactScreen extends StatelessWidget {
       ),
       const SizedBox(height: 20),
       const Text(
-        'We\'d love to hear from you! Reach out for support, feedback, or any questions.',
+        'I\'d love to hear from you! Reach out for support, feedback, or any questions.',
         style: TextStyle(fontSize: 16),
       ),
       const SizedBox(height: 40),
@@ -82,7 +82,7 @@ class ContactScreen extends StatelessWidget {
         context,
         icon: Icons.email,
         title: 'Email',
-        subtitle: 'support@cliclock.com',
+        subtitle: 'mamaruyirga1394@gmail.com',
         onTap: () => _launchEmail(),
       ),
       const SizedBox(height: 20),
@@ -90,7 +90,7 @@ class ContactScreen extends StatelessWidget {
         context,
         icon: Icons.web,
         title: 'Website',
-        subtitle: 'www.cliclock.com',
+        subtitle: 'https://my-portfolio-five-olive-23.vercel.app/',
         onTap: () => _launchWebsite(),
       ),
       const SizedBox(height: 20),
@@ -98,7 +98,7 @@ class ContactScreen extends StatelessWidget {
         context,
         icon: Icons.phone,
         title: 'Phone',
-        subtitle: '+1 (555) 123-4567',
+        subtitle: '+2519 2100 5559',
         onTap: () => _launchPhone(),
       ),
       const SizedBox(height: 20),
@@ -106,7 +106,7 @@ class ContactScreen extends StatelessWidget {
         context,
         icon: Icons.telegram,
         title: 'Telegram',
-        subtitle: '@cliclocksupport',
+        subtitle: '@fcujj',
         onTap: () => _launchTelegram(),
       ),
     ];
@@ -134,7 +134,7 @@ class ContactScreen extends StatelessWidget {
   void _launchEmail() async {
     final Uri emailUri = Uri(
       scheme: 'mailto',
-      path: 'support@cliclock.com',
+      path: 'mamaruyirga1394@gmail.com',
       queryParameters: {'subject': 'Cliclock Support'},
     );
     if (await canLaunchUrl(emailUri)) {
@@ -143,21 +143,21 @@ class ContactScreen extends StatelessWidget {
   }
 
   void _launchWebsite() async {
-    final Uri websiteUri = Uri.parse('https://www.cliclock.com');
+    final Uri websiteUri = Uri.parse('https://my-portfolio-five-olive-23.vercel.app/');
     if (await canLaunchUrl(websiteUri)) {
       await launchUrl(websiteUri);
     }
   }
 
   void _launchPhone() async {
-    final Uri phoneUri = Uri(scheme: 'tel', path: '+15551234567');
+    final Uri phoneUri = Uri(scheme: 'tel', path: '+251921005559');
     if (await canLaunchUrl(phoneUri)) {
       await launchUrl(phoneUri);
     }
   }
 
   void _launchTelegram() async {
-    final Uri telegramUri = Uri.parse('https://t.me/cliclocksupport');
+    final Uri telegramUri = Uri.parse('https://t.me/fcujj');
     if (await canLaunchUrl(telegramUri)) {
       await launchUrl(telegramUri);
     }
